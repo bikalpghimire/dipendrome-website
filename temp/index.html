@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dipendra Shrestha – Aviation Engineer & Project Director</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1a3257;
+    --sky: #64b5d9;
+    --sky-light: #a8d8f0;
+    --gold: #c8a96e;
+    --gold-light: #e8c98e;
+    --white: #f0eff0;
+    --off-white: #d8d6cc;
+    --muted: #7a8a99;
+    --accent: #e05a2b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--off-white);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,169,110,0.15);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+
+  /* ─── HERO ────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-runway {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 119px,
+        rgba(100,181,217,0.04) 119px,
+        rgba(100,181,217,0.04) 120px
+      ),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  }
+
+  .hero-runway::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 4px; height: 55vh;
+    background: repeating-linear-gradient(
+      180deg,
+      var(--gold) 0px, var(--gold) 28px,
+      transparent 28px, transparent 48px
+    );
+    transform: translateX(-50%);
+    opacity: 0.25;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 6rem 4rem;
+    max-width: 860px;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-name span { color: var(--gold); }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.65rem);
+    font-weight: 300;
+    color: var(--sky-light);
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.6s forwards;
+  }
+
+  .hero-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+  }
+
+  .hero-summary {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--off-white);
+    max-width: 620px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.0s forwards;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1.2rem; margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.2s forwards;
+  }
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: var(--gold);
+    color: var(--navy);
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--sky);
+    border: 1px solid var(--sky);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s;
+  }
+  .btn-outline:hover { background: rgba(100,181,217,0.1); }
+
+  .hero-stats {
+    position: absolute;
+    right: 5rem; bottom: 5rem;
+    display: flex; gap: 3rem;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.4s forwards;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* ─── SECTION BASE ────────────────────────────── */
+  section { padding: 7rem 6rem; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+  .section-title span { color: var(--gold); }
+
+  /* ─── ACHIEVEMENTS ────────────────────────────── */
+  #achievements {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(200,169,110,0.12);
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5px;
+    background: rgba(200,169,110,0.08);
+  }
+  .ach-card {
+    background: var(--navy-mid);
+    padding: 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .ach-card:hover { background: var(--navy-light); }
+  .ach-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s;
+  }
+  .ach-card:hover::before { height: 100%; }
+  .ach-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: rgba(200,169,110,0.12);
+    margin-bottom: 0.8rem;
+  }
+  .ach-text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--off-white);
+  }
+
+  /* ─── EXPERIENCE ──────────────────────────────── */
+  #experience {
+    background: var(--navy);
+  }
+
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 3rem;
+    padding: 0 0 4rem 0;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -4px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .tl-dates {
+    padding-left: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--sky);
+    padding-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  .tl-content { border-left: none; }
+  .tl-role {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .tl-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--off-white);
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+  }
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--sky);
+    font-size: 0.8rem;
+  }
+
+  /* ─── ICAO ENGAGEMENT ─────────────────────────── */
+  #icao {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(100,181,217,0.1);
+  }
+
+  .icao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .icao-card {
+    border: 1px solid rgba(100,181,217,0.15);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .icao-card:hover { border-color: rgba(100,181,217,0.4); }
+  .icao-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at bottom right, rgba(100,181,217,0.08), transparent);
+  }
+  .icao-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 0.8rem;
+  }
+  .icao-card-text {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--off-white);
+    line-height: 1.65;
+  }
+
+  .meetings-list { }
+  .meetings-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .meeting-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .meeting-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    min-width: 52px;
+    padding-top: 2px;
+  }
+  .meeting-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--off-white);
+    line-height: 1.6;
+  }
+
+  /* ─── COMPETENCIES ────────────────────────────── */
+  #competencies {
+    background: var(--navy);
+  }
+  .comp-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .comp-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .comp-tag.primary {
+    border-color: rgba(200,169,110,0.5);
+    color: var(--gold);
+    background: rgba(200,169,110,0.05);
+  }
+  .comp-tag.primary:hover {
+    background: rgba(200,169,110,0.15);
+    border-color: var(--gold);
+  }
+  .comp-tag.secondary {
+    border-color: rgba(100,181,217,0.3);
+    color: var(--sky);
+    background: rgba(100,181,217,0.04);
+  }
+  .comp-tag.secondary:hover {
+    background: rgba(100,181,217,0.12);
+    border-color: var(--sky);
+  }
+
+  /* ─── EDUCATION ───────────────────────────────── */
+  #education {
+    background: var(--navy-mid);
+    border-top: 1px solid rgba(200,169,110,0.08);
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .edu-card {
+    padding: 2.2rem;
+    border-top: 2px solid var(--gold);
+    background: rgba(200,169,110,0.03);
+    transition: background 0.3s;
+  }
+  .edu-card:hover { background: rgba(200,169,110,0.07); }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--sky);
+    margin-bottom: 0.8rem;
+  }
+  .edu-detail {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  /* ─── CONTACT ─────────────────────────────────── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+    padding: 8rem 6rem;
+  }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-email {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--sky-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(100,181,217,0.3);
+    padding-bottom: 0.2rem;
+    margin: 2rem 0;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .contact-email:hover { color: var(--white); border-color: var(--sky); }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .contact-link:hover { color: var(--gold); }
+
+  /* ─── FOOTER ──────────────────────────────────── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 5rem 2rem; }
+    .hero-content { padding: 7rem 2rem 12rem; }
+    .hero-stats { right: 2rem; bottom: 3rem; gap: 1.5rem; }
+    .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .tl-dates { padding-left: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">DS</div>
+  <ul class="nav-links">
+    <li><a href="#achievements">Profile</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#icao">ICAO</a></li>
+    <li><a href="#competencies">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-runway"></div>
+  <div class="hero-content">
+    <p class="hero-label">Civil Aviation Engineer &nbsp;·&nbsp; Project Director &nbsp;·&nbsp; ICAO Expert</p>
+    <h1 class="hero-name">Dipendra<br><span>Shrestha</span></h1>
+    <p class="hero-title">P.Eng. · Senior Professional, Aerodromes & Ground Aids<br>Civil Aviation Authority of Nepal</p>
+    <div class="hero-divider"></div>
+    <p class="hero-summary">Over 22 years shaping Nepal's aviation infrastructure — directing USD 148M+ in airport modernisation, representing Nepal at ICAO globally, and delivering Annex 14-compliant aerodromes that connect a nation to the world.</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">22+</div>
+      <div class="stat-label">Years at CAAN</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">148M</div>
+      <div class="stat-label">USD Program Value</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">ICAO AP-ADO TFs</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ────────────────────────────── -->
+<section id="achievements">
+  <div class="reveal"><p class="section-label">Executive Profile</p></div>
+  <div class="reveal"><h2 class="section-title">Major <span>Achievements</span></h2></div>
+  <div class="achievements-grid reveal">
+    <div class="ach-card">
+      <div class="ach-num">01</div>
+      <p class="ach-text">Member of the <strong>ICAO Aerodrome Design and Operations Panel (ADOP)</strong> — contributing to the drafting and review of global aerodrome standards including altiports guidance under ICAO's formal regulatory development process.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">02</div>
+      <p class="ach-text">Active expert at <strong>ICAO AP-ADO Task Force TF/1 through TF/7</strong>, presenting working papers on aerodrome design standards, alternative means of compliance, and SARPs harmonisation for the Asia-Pacific region.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">03</div>
+      <p class="ach-text">Selected among <strong>top candidates globally</strong> for the final interview stage for Regional Officer, Aerodrome and Ground Aids (RO/AGA), APAC, at the International Civil Aviation Organization, 2025.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">04</div>
+      <p class="ach-text">Initiated and led the <strong>USD 148+ million ADB-financed airport infrastructure modernisation programme</strong> at VNKT as Project Director — covering runway rehabilitation, taxiway extensions, international apron expansion, terminal upgrades, and AGL/NAVAIDS renewal.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">05</div>
+      <p class="ach-text">Member-Secretary of the <strong>Study Team on PPP Models</strong> for Nepal's three international airports (TIA, GBIA, PRIA) — formed by the Council of Ministers, Government of Nepal.</p>
+    </div>
+    <div class="ach-card">
+      <div class="ach-num">06</div>
+      <p class="ach-text">Produced the <strong>Bow-Tie Safety Risk Assessment</strong> (ICAO Doc 9859) for first-time operational activation of the new S-T-P-H-F taxiway routes at VNKT — establishing a precedent for evidence-based operational change management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ──────────────────────────────── -->
+<section id="experience">
+  <div class="reveal"><p class="section-label">Career History</p></div>
+  <div class="reveal"><h2 class="section-title">Employment <span>Records</span></h2></div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dates">SEP 2021<br>— PRESENT</div>
+      <div class="tl-content">
+        <div class="tl-role">Project Director</div>
+        <div class="tl-org">Air Transport Capacity Enhancement Project · CAAN &nbsp;(L-10)</div>
+        <ul class="tl-bullets">
+          <li>Directed ADB-financed VNKT capital programme valued at USD 148+ million — planning, procurement, contract administration, construction supervision, and commissioning.</li>
+          <li>Coordinated with ADB, MoCTCA, and CAAN leadership to ensure ADB Safeguard Policy compliance, environmental and social commitments, and timely disbursement milestones.</li>
+          <li>Managed multi-disciplinary teams across simultaneous work packages: runway, taxiway, apron, AGL, NAVAIDS, terminal, and drainage.</li>
+          <li>Led safety risk management using ICAO Doc 9859 Bow-Tie methodology for operational changes during construction, ensuring Annex 14 compliance and airport continuity.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dates">MAR 2013<br>— SEP 2021</div>
+      <div class="tl-content">
+        <div class="tl-role">Manager / Deputy Manager</div>
+        <div class="tl-org">Civil Aviation Authority of Nepal &nbsp;(L-9)</div>
+        <ul class="tl-bullets">
+          <li>Planned, designed, and supervised construction of major aerodrome infrastructure at VNKT and domestic airports — runways, taxiways, aprons, terminal buildings, drainage, fencing, lighting, and NAVAIDs.</li>
+          <li>Conducted aerodrome certification inspections and compliance audits against ICAO Annex 14 Volume I.</li>
+          <li>Participated in ICAO APAC AP-ADO Task Force meetings, contributing technical papers on behalf of Nepal.</li>
+          <li>Delivered aerodrome engineering and airside safety training at the Civil Aviation Academy Nepal.</li>
+          <li>Administered termination of ICB-01 contract (USD 69.05M) with Constructora Sanjose (Spain) and led dispute resolution including SIAC Arbitration No. 059/2018, Singapore.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dates">JAN 2008<br>— MAR 2012</div>
+      <div class="tl-content">
+        <div class="tl-role">Senior Officer</div>
+        <div class="tl-org">Civil Aviation Authority of Nepal &nbsp;(L-7 / L-8)</div>
+        <ul class="tl-bullets">
+          <li>Executed engineering surveys, prepared designs, and supervised construction for airport pavement, drainage, and civil infrastructure at VNKT and regional airports.</li>
+          <li>Supported aerodrome operations inspections in compliance with CAAN's Aerodrome Safety Standards Department.</li>
+          <li>Prepared bid documents, technical specifications, and managed contracts for airport civil works funded by government and donor programmes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ICAO ENGAGEMENT ─────────────────────────── -->
+<section id="icao">
+  <div class="reveal"><p class="section-label">Global Representation</p></div>
+  <div class="reveal"><h2 class="section-title">ICAO & International <span>Engagement</span></h2></div>
+
+  <div class="icao-grid reveal">
+    <div class="icao-card">
+      <p class="icao-card-title">ADOP Member</p>
+      <p class="icao-card-text">ICAO Aerodrome Design and Operations Panel — contributing to global aerodrome SARPs development and amendment processes, including altiports guidance.</p>
+    </div>
+    <div class="icao-card">
+      <p class="icao-card-title">AP-ADO Task Force</p>
+      <p class="icao-card-text">Asia/Pacific Task Force expert from TF/1 through TF/7, representing Nepal and submitting working papers on aerodrome standards and obstacle limitation.</p>
+    </div>
+    <div class="icao-card">
+      <p class="icao-card-title">AP-WHM Working Group</p>
+      <p class="icao-card-text">Participant in ICAO Asia/Pacific Wildlife Hazard Management Working Group — supporting regional safety and wildlife hazard reduction programmes.</p>
+    </div>
+    <div class="icao-card">
+      <p class="icao-card-title">SIAC Arbitration</p>
+      <p class="icao-card-text">Contributor for aviation infrastructure dispute resolution at the Singapore International Arbitration Centre — SIAC Arbitration No. 059/2018.</p>
+    </div>
+    <div class="icao-card">
+      <p class="icao-card-title">ADB Engagement</p>
+      <p class="icao-card-text">Extensive operational engagement as Project Director for ADB Loan programmes — procurement, safeguards compliance, and Grant management at CAAN.</p>
+    </div>
+    <div class="icao-card">
+      <p class="icao-card-title">PPP Advisory</p>
+      <p class="icao-card-text">Member-Secretary, Study Team on PPP Models for Nepal's three international airports formed by the Council of Ministers, Government of Nepal.</p>
+    </div>
+  </div>
+
+  <div class="meetings-list reveal">
+    <p class="meetings-label">Selected International Meetings & Conferences</p>
+    <div class="meeting-item">
+      <span class="meeting-year">2026</span>
+      <span class="meeting-desc">AP-ADO/TF/7, Bangkok — Presented WP/16 on "As Far As Practicable" guidance for ICAO Annex 14, on behalf of Nepal (lead) and co-sponsors Australia, Malaysia, New Zealand, and Pakistan.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2025</span>
+      <span class="meeting-desc">SASEC Transport Working Group Meeting, Kathmandu — Discussed utilisation of VNBW, VNPR, and VNKT for trade facilitation.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2025</span>
+      <span class="meeting-desc">ICAO AP-WHM/WG/7, Pokhara — Wildlife Hazard Management Workshop & Working Group meeting.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2025</span>
+      <span class="meeting-desc">SOTEN 3rd International Conference, Kathmandu — Presented paper on Extension of Parallel Taxiways and Expansion of International Apron at VNKT.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2025</span>
+      <span class="meeting-desc">AP-ADO/TF/6, Langkawi — Presented PPT/01 on Expansion of Tribhuvan International Airport on behalf of Nepal.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2024</span>
+      <span class="meeting-desc">7th US-India Aviation Summit, Washington D.C. &nbsp;·&nbsp; Second Changi Aviation Summit, Singapore &nbsp;·&nbsp; AP-ADO/TF/5, Chiang Rai.</span>
+    </div>
+    <div class="meeting-item">
+      <span class="meeting-year">2022</span>
+      <span class="meeting-desc">41st Session of the ICAO Assembly, Montreal, Canada.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPETENCIES ────────────────────────────── -->
+<section id="competencies">
+  <div class="reveal"><p class="section-label">Expertise</p></div>
+  <div class="reveal"><h2 class="section-title">Core Leadership <span>Competencies</span></h2></div>
+  <div class="comp-grid reveal">
+    <span class="comp-tag primary">Aviation Management & Operations</span>
+    <span class="comp-tag primary">ICAO SARPs Implementation</span>
+    <span class="comp-tag primary">Airport Master Planning</span>
+    <span class="comp-tag primary">Aerodrome Certification & Audit</span>
+    <span class="comp-tag primary">ADB Project Leadership</span>
+    <span class="comp-tag primary">Safety Management (SMS / SSP)</span>
+    <span class="comp-tag primary">Institutional Reform & PPP</span>
+    <span class="comp-tag primary">ICAO USOAP CMA Phase 1 & 2 (AGA)</span>
+    <span class="comp-tag secondary">Procurement & Contracts Administration</span>
+    <span class="comp-tag secondary">Multi-Stakeholder Coordination</span>
+    <span class="comp-tag secondary">Dispute Settlement & Arbitration</span>
+    <span class="comp-tag secondary">ICAO APAC Representation</span>
+    <span class="comp-tag secondary">Training, Mentoring & Capacity Building</span>
+    <span class="comp-tag secondary">Leadership & Decision Making</span>
+    <span class="comp-tag secondary">Project Management</span>
+    <span class="comp-tag secondary">Communication & Analytical Skills</span>
+    <span class="comp-tag secondary">Aviation Law — Airspace, ICAO, Air Transport</span>
+    <span class="comp-tag secondary">AutoCAD · MS Project · ArcGIS · BIM</span>
+  </div>
+</section>
+
+<!-- ── EDUCATION ───────────────────────────────── -->
+<section id="education">
+  <div class="reveal"><p class="section-label">Academic Background</p></div>
+  <div class="reveal"><h2 class="section-title">Education & <span>Qualifications</span></h2></div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <p class="edu-degree">M.Sc. Engineering Management</p>
+      <p class="edu-school">Acme Engineering College · Purbanchal University, Nepal</p>
+      <p class="edu-detail">First Division with Distinction &nbsp;·&nbsp; 2009 – 2011</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">B.E. Civil Engineering</p>
+      <p class="edu-school">Kathmandu Engineering College · Tribhuvan University, Nepal</p>
+      <p class="edu-detail">First Division &nbsp;·&nbsp; 1999 – 2003</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">Diploma in Civil Engineering</p>
+      <p class="edu-school">IOE Pulchowk Campus · Tribhuvan University, Nepal</p>
+      <p class="edu-detail">First Division &nbsp;·&nbsp; 1994 – 1997</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">Professional Engineer (P.Eng.)</p>
+      <p class="edu-school">Nepal Engineering Council — Reg. No. 3251/08/082/83</p>
+      <p class="edu-detail">Category A · Civil &nbsp;·&nbsp; Certified Nov 2025</p>
+    </div>
+  </div>
+
+  <div style="margin-top:4rem;" class="reveal">
+    <p class="meetings-label">Key Certifications & Training</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+      <span class="comp-tag secondary">USOAP CMA Phase 1 & 2 (AGA) · 2026</span>
+      <span class="comp-tag secondary">Safety Risk Management · 2026</span>
+      <span class="comp-tag secondary">Authorized ATS-ATO Instructor · 2025</span>
+      <span class="comp-tag secondary">Advanced Aviation Management · 2025</span>
+      <span class="comp-tag secondary">Civil Aviation Master Planning · 2022</span>
+      <span class="comp-tag secondary">TRAINAIR PLUS Instructor · 2017</span>
+      <span class="comp-tag secondary">ICAO SMS Course · 2011</span>
+      <span class="comp-tag secondary">ICAO SSP Training · 2011</span>
+      <span class="comp-tag secondary">Airport Pavement Technology · 2018</span>
+      <span class="comp-tag secondary">Contract Management of Works · 2015</span>
+      <span class="comp-tag secondary">Procurement & Dispute Resolution · 2014</span>
+      <span class="comp-tag secondary">Aerodrome Certification Course · 2009</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal"><p class="section-label">Get in Touch</p></div>
+    <div class="reveal"><h2 class="section-title">Contact <span>Dipendra</span></h2></div>
+    <p class="reveal" style="font-size:1.1rem;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto;">
+      Senior civil aviation leader open to collaboration, advisory engagements, and ICAO-related partnerships.
+    </p>
+    <div class="reveal">
+      <a href="mailto:dpndrs@gmail.com" class="contact-email">dpndrs@gmail.com</a>
+    </div>
+    <p class="reveal" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--muted);">
+      +977 985-110-3765 &nbsp;·&nbsp; Kathmandu, Nepal
+    </p>
+    <div class="contact-links reveal">
+      <a href="https://www.linkedin.com/in/dipendra-shrestha-peng-60203311/" class="contact-link" target="_blank">LinkedIn</a>
+      <a href="https://dipendrome.com" class="contact-link">dipendrome.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────── -->
+<footer>
+  <p>© 2026 Dipendra Shrestha &nbsp;·&nbsp; Kathmandu, Nepal</p>
+  <p>P.Eng. · NEC No. 3251 &nbsp;·&nbsp; Civil Aviation Authority of Nepal</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
