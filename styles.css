@@ -288,6 +288,14 @@ body {
     font-size: 1.6rem;
     color: var(--sky);
 }
+
+/* Custom SVG icons — match Bootstrap icon sizing & colour */
+.competency-icon.svg-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+    color: var(--sky);
+    flex-shrink: 0;
+}
 .competency-card span {
     font-size: .82rem;
     font-weight: 500;
