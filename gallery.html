@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery | Dipendra Shrestha</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Dipendra Shrestha</a>
+            <button type="button" id="soundToggle" class="sound-toggle-btn ms-2" aria-pressed="false" aria-label="Play safety song">
+                <i class="bi bi-volume-up-fill"></i>
+            </button>
+            <button class="navbar-toggler border-0 ms-auto" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#competencies">Competencies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#icao">ICAO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#training">Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <audio id="safetyAudio" src="safety_song.mp3" preload="none" loop></audio>
+
+
+    <!-- GALLERY HEADER -->
+    <section class="gallery-hero">
+        <div class="container text-center">
+            <span class="section-label" data-aos="fade-up">Fieldwork</span>
+            <h1 class="gallery-hero-title" data-aos="fade-up" data-aos-delay="80">Site Gallery</h1>
+            <p class="gallery-hero-sub" data-aos="fade-up" data-aos-delay="160">
+                A look at airside construction sites.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- GALLERY GRID -->
+    <section class="section pt-0">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="gallery-item" data-caption="FOD Removal">
+                    <img src="gallery/FOD-removal-1.jpg" alt="FOD Removal" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="FOD Removal">
+                    <img src="gallery/FOD-removal-2.jpg" alt="FOD Removal" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Night Excavation">
+                    <img src="gallery/Night-Excavation.jpg" alt="Night Excavation" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Night Work">
+                    <img src="gallery/Night-Work.jpg" alt="Night Work" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Signage">
+                    <img src="gallery/Signage-B.jpg" alt="Signage" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Trench Works">
+                    <img src="gallery/Trench-1.jpg" alt="Trench Works" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Trench Works">
+                    <img src="gallery/Trench-2.jpg" alt="Trench Works" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Trench Works">
+                    <img src="gallery/Trench-3.jpg" alt="Trench Works" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+                <div class="gallery-item" data-caption="Trench Works">
+                    <img src="gallery/Trench-4.jpg" alt="Trench Works" loading="lazy">
+                    <div class="gallery-item-overlay"><i class="bi bi-zoom-in"></i></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
+        <figure class="lightbox-figure">
+            <img id="lightboxImg" src="" alt="">
+            <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">© 2026 Dipendra Shrestha &nbsp;·&nbsp; P.Eng. (Airport Project Management)</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 60 });
+
+        const soundToggle = document.getElementById('soundToggle');
+        const safetyAudio = document.getElementById('safetyAudio');
+        const soundIcon = soundToggle.querySelector('i');
+
+        soundToggle.addEventListener('click', () => {
+            if (safetyAudio.paused) {
+                safetyAudio.play();
+            } else {
+                safetyAudio.pause();
+            }
+        });
+
+        safetyAudio.addEventListener('play', () => {
+            soundToggle.classList.add('playing');
+            soundToggle.setAttribute('aria-pressed', 'true');
+            soundToggle.setAttribute('aria-label', 'Pause safety song');
+            soundIcon.className = 'bi bi-volume-mute-fill';
+        });
+
+        safetyAudio.addEventListener('pause', () => {
+            soundToggle.classList.remove('playing');
+            soundToggle.setAttribute('aria-pressed', 'false');
+            soundToggle.setAttribute('aria-label', 'Play safety song');
+            soundIcon.className = 'bi bi-volume-up-fill';
+        });
+
+        // ── LIGHTBOX ──────────────────────────────────
+        const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateLightbox() {
+            const item = galleryItems[currentIndex];
+            const img = item.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxCaption.textContent = item.dataset.caption || '';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            updateLightbox();
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateLightbox();
+        }
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => openLightbox(index));
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxNext').addEventListener('click', showNext);
+        document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
+        });
+    </script>
+
+</body>
+</html>
